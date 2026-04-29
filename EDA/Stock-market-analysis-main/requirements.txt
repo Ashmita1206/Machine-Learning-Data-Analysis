@@ -1,0 +1,8 @@
+#libraries i used in the project 
+#pip install -r requirements.txt
+pandas
+numpy
+yfinance
+matplotlib
+seaborn
+datetime
