@@ -1,300 +1,144 @@
-# 🎙️ Speech Recognition System using Deep Learning
+🎤 Speech Recognition & Classification using Whisper
+🚀 Overview
+This project is an end-to-end Speech Recognition system that:
 
-A deep learning based **Speech Recognition Web Application** that classifies spoken audio into predefined categories using an RNN/LSTM based neural network model.
+Converts speech → text using OpenAI Whisper (local model)
 
-The application allows users to upload or record audio, processes the speech signal, extracts meaningful audio features, and predicts the recognized word using a trained deep learning model.
+Performs keyword classification (Yes/No)
 
----
+Provides a web interface (Flask) for real-time interaction
 
-## 🚀 Project Overview
+✨ Features
+🎙️ Audio upload / recording support
 
-Speech Recognition is a technology that enables computers to understand and interpret human speech.
+🧠 Speech-to-text using Whisper (no API key required)
 
-This project implements a complete end-to-end pipeline:
+📊 MFCC-based preprocessing
 
-1. Audio Collection
-2. Audio Preprocessing
-3. Feature Extraction
-4. Deep Learning Model Training
-5. Model Deployment
-6. Real-time Prediction through Web Interface
+🤖 Deep Learning model for classification
 
-The system takes an audio input and predicts the spoken command.
+🌐 Interactive frontend (HTML, CSS, JS)
 
----
+⚡ Fast local inference
 
-## ✨ Features
+🧠 Tech Stack
+Python
 
-✅ Upload audio files  
-✅ Record audio from browser  
-✅ Convert audio into machine-readable features  
-✅ Deep learning based speech classification  
-✅ Real-time prediction  
-✅ Interactive web interface  
-✅ Model based inference  
-✅ Audio visualization using spectrograms
+Flask
 
----
+OpenAI Whisper (local)
 
-## 🛠️ Technologies Used
+Librosa (audio processing)
 
-### Programming Language
+TensorFlow / Keras
 
-- Python
+JavaScript (frontend)
 
-### Deep Learning
-
-- TensorFlow
-- Keras
-- RNN / LSTM Neural Network
-
-### Audio Processing
-
-- Librosa
-- NumPy
-- SoundFile
-
-### Backend
-
-- Flask
-
-### Frontend
-
-- HTML
-- CSS
-- JavaScript
-
-### Data Handling
-
-- Pandas
-
----
-
-## 📂 Project Structure
-
+📂 Project Structure
 SPEECH RECOGNITION/
-
 │
-├── app.py
-│ └── Flask application entry point
+├── app.py                # Flask backend
+├── requirements.txt     # Dependencies
+├── README.md
 │
 ├── model/
-│ ├── model.py
-│ ├── speech_model.keras
-│ └── label_map.json
+│   ├── model.py
+│   ├── speech_model.keras
+│   └── label_map.json
 │
 ├── utils/
-│ ├── audio_processing.py
-│ ├── dataset.py
-│ └── predict.py
-│
-├── templates/
-│ └── index.html
+│   ├── audio_processing.py
+│   ├── dataset.py
+│   └── predict.py
 │
 ├── static/
-│ ├── style.css
-│ ├── script.js
-│ ├── uploads/
-│ └── spectrograms/
+│   ├── script.js
+│   ├── style.css
+│   ├── uploads/
+│   └── spectrograms/
 │
-├── data/
-│ ├── yes/
-│ └── no/
+├── templates/
+│   └── index.html
 │
-├── requirements.txt
-│
-├── test.py
-│
-└── README.md
-
----
-
-# 🧠 Machine Learning Workflow
-
-## 1. Audio Input
-
-User provides an audio sample:
-
-Example:
-yes.wav
-no.wav
-
----
-
-## 2. Audio Preprocessing
-
-The audio is processed before feeding into the model.
-
-Steps:
-
-- Load audio file
-- Convert sampling rate
-- Normalize audio signal
-- Remove unwanted noise
-- Prepare fixed length input
-
----
-
-## 3. Feature Extraction
-
-Raw audio cannot directly be understood by neural networks.
-
-The project converts audio into meaningful features:
-
-### MFCC (Mel Frequency Cepstral Coefficients)
-
-MFCC captures important characteristics of human speech.
-
-Pipeline:
-Audio Waveform
-|
-↓
-MFCC Extraction
-|
-↓
-Feature Matrix
-|
-↓
-Neural Network
-
----
-
-# 🤖 Deep Learning Model
-
-The model uses a Recurrent Neural Network architecture.
-
-## Why RNN/LSTM?
-
-Speech is sequential data.
-
-Example:
-Sound1 → Sound2 → Sound3 → Word
-
-RNN remembers previous information while processing the sequence.
-
----
-
-## Model Architecture
-
-Example:
-Input Layer
-
-↓
-LSTM Layer
-
-↓
-Dense Layer
-
-↓
-Softmax Output
-
-↓
-Prediction
-
----
-
-# 📊 Model Output
-
-The model predicts classes:
-
-Example:
-
-Input:
-audio.wav
-
-Output:
-Prediction: YES
-Confidence: 96%
-
----
-
-# ⚙️ Installation
-
-## 1. Clone Repository
-
-```bash
-git clone <repository-url>
-2. Move into Project Directory
-cd SPEECH RECOGNITION
-3. Create Virtual Environment
+├── data/                # Training data
+├── uploads/             # Runtime uploads
+⚙️ Installation
+1️⃣ Clone Repo
+git clone <your-repo-link>
+cd speech-recognition
+2️⃣ Create Virtual Environment
 python -m venv venv
-Activate:
-
-Windows:
-
-venv\Scripts\activate
-Linux/Mac:
-
-source venv/bin/activate
-4. Install Dependencies
+venv\Scripts\activate   # Windows
+3️⃣ Install Dependencies
 pip install -r requirements.txt
-▶️ Running the Application
-Start Flask server:
-
+▶️ Run the App
 python app.py
-Open browser:
+Open in browser:
 
 http://127.0.0.1:5000
-🎤 How To Use
-Open the application
+🧠 How It Works
+🔹 Step 1: Audio Input
+User uploads or records audio
 
-Upload an audio file OR record audio
+🔹 Step 2: Preprocessing
+Convert to 16kHz mono WAV
 
-Click Predict
+Extract MFCC features
 
-Wait for processing
+🔹 Step 3: Whisper Transcription
+whisper_model = whisper.load_model("base")
+result = whisper_model.transcribe(audio_path)
+🔹 Step 4: Classification
+Process MFCC features
 
-View prediction result
+Predict label (Yes / No)
 
-📌 Dataset
-The project uses speech samples for training.
+🔹 Step 5: Output
+Transcribed text
 
-Current classes:
+Predicted label
 
-yes
-no
-Dataset structure:
+Confidence score
 
-data/
+⚠️ Important Notes
+Whisper model loads at runtime:
 
- ├── yes/
- │    ├── yes1.wav
- │    └── yes2.wav
+Loading Whisper model (base)...
+👉 This is normal (first run takes time)
 
- └── no/
-      ├── no1.wav
-      └── no2.wav
-🔮 Future Improvements
-Add more speech commands
+Flask debug mode runs app twice → model loads twice
 
-Increase dataset size
+Use debug=False to avoid double loading
 
-Improve accuracy
+📊 Model Details
+Input: MFCC features
 
-Add noise cancellation
+Architecture: Neural Network (Keras)
 
-Deploy on cloud
+Output: Binary classification (Yes / No)
 
-Add multilingual speech recognition
+🧪 Sample Commands
+Test preprocessing:
 
-Implement Transformer based models
+python test.py
+🚧 Future Improvements
+🔊 Real-time microphone streaming
 
-📈 Performance
-The model performance depends on:
+🌍 Multi-language support
 
-Dataset quality
+📈 More dataset for better accuracy
 
-Number of training samples
-
-Audio preprocessing
-
-Model architecture
+🚀 Deployment (AWS / Render)
 
 👩‍💻 Author
-Ashmita
+Ashmita Goyal
 
-Machine Learning / Deep Learning Project
+💡 Final Note
+This project combines:
 
-📜 License
-This project is created for educational purposes.
-```
+Speech Recognition (Whisper)
+
+Machine Learning Classification
+
+Full Stack Development (Flask + JS)
+
