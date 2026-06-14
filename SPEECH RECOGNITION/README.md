@@ -1,34 +1,84 @@
-🎤 Speech Recognition System (Yes/No Classifier + Whisper)
-📌 Overview
-This project is an end-to-end Speech Recognition System that can:
+# 🎤 Speech Recognition System (Yes/No Classifier + Whisper)
 
-🎙️ Take voice input from user
+<div align="center">
 
-🔊 Convert audio into text using Whisper
+![Python](https://img.shields.io/badge/Python-3.10-blue?style=for-the-badge&logo=python)
+![Flask](https://img.shields.io/badge/Flask-Web_App-black?style=for-the-badge&logo=flask)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-DeepLearning-orange?style=for-the-badge&logo=tensorflow)
+![Librosa](https://img.shields.io/badge/Librosa-AudioProcessing-purple?style=for-the-badge)
+![Whisper](https://img.shields.io/badge/OpenAI-Whisper-green?style=for-the-badge)
+![JavaScript](https://img.shields.io/badge/Frontend-JS-yellow?style=for-the-badge&logo=javascript)
 
-🤖 Classify speech into "Yes" or "No" using a trained ML model
+</div>
 
-📊 Generate spectrograms for visualization
+---
 
-🚀 Features
-🎤 Real-time audio recording (browser)
+## 📌 Overview
 
-🔄 Audio format conversion (WebM → WAV)
+This is an **end-to-end Speech Recognition System** that combines:
 
-🧠 Speech-to-text using Whisper
+- 🧠 **Speech-to-Text (Whisper)**
+- 🤖 **Custom ML Classification (Yes/No)**
+- 🌐 **Flask Web App Interface**
 
-🤖 Custom trained classification model (Yes/No)
+It allows users to **record voice, transcribe it, and classify it in real-time**.
 
-📊 Spectrogram generation
+---
 
-🌐 Flask-based web app
+## 🎯 Key Features
+
+- 🎤 Real-time voice recording (browser)
+- 🔄 Audio format conversion (WebM → WAV)
+- 🧠 Whisper-based speech-to-text (offline)
+- 🤖 ML model for Yes/No classification
+- 📊 Spectrogram generation
+- 🌐 Interactive Flask web app
+
+---
+
+## 📸 Screenshots
+
+> ⚠️ Add your screenshots here
+
+```html
+<!-- Example -->
+<img width="2560" height="1244" alt="Screenshot 2026-06-11 212852" src="https://github.com/user-attachments/assets/a677b55e-8d2e-4dc0-a139-43f16b0f6e32" />
+<img width="2560" height="1252" alt="Screenshot 2026-06-11 212915" src="https://github.com/user-attachments/assets/727616f5-6491-4648-9261-18e31540a43d" />
+
+🛠️ Tech Stack
+🔹 Languages
+Python
+
+JavaScript
+
+HTML
+
+CSS
+
+🔹 Libraries & Frameworks
+Flask
+
+NumPy
+
+Librosa
+
+TensorFlow / Keras
+
+OpenAI Whisper
+
+🔹 Tools
+FFmpeg
+
+Git & GitHub
+
+VS Code
 
 🏗️ Project Structure
 SPEECH-RECOGNITION/
 │
-├── app.py                      # Main Flask app
-├── requirements.txt           # Dependencies
-├── test.py                    # Model testing
+├── app.py                 # Main Flask app
+├── requirements.txt       # Dependencies
+├── test.py                # Model testing
 │
 ├── data/
 │   ├── yes/
@@ -52,106 +102,73 @@ SPEECH-RECOGNITION/
 │
 ├── templates/
 │   └── index.html
-⚙️ Tech Stack
-Python
-
-Flask
-
-TensorFlow / Keras
-
-Librosa
-
-Whisper (OpenAI)
-
-JavaScript (Frontend)
-
-HTML/CSS
-
-🧠 How It Works
-🔹 Step 1: Audio Input
-User records audio from browser
-
-File saved as .webm
-
-🔹 Step 2: Conversion
-Audio converted to .wav using FFmpeg
-
-🔹 Step 3: Feature Extraction
-MFCC features extracted using Librosa
-
-🔹 Step 4: Prediction
-Model predicts: Yes / No
-
-🔹 Step 5: Whisper
-Converts speech → text
-
-🔹 Step 6: Output
-Shows:
-
-Prediction
-
-Transcribed text
-
-Spectrogram
-
-🧪 Model Details
-Input: Audio (WAV)
-
-Features: MFCC
-
-Model: Neural Network (Keras)
-
-Output: Binary classification (Yes / No)
-
-💻 Installation & Setup
-1️⃣ Clone repo
+⚙️ Installation & Setup
+1️⃣ Clone Repository
 git clone <your-repo-link>
 cd SPEECH-RECOGNITION
-2️⃣ Create virtual environment
+2️⃣ Create Virtual Environment
 python -m venv .venv
-3️⃣ Activate environment
-# Windows
 .venv\Scripts\activate
-4️⃣ Install dependencies
+3️⃣ Install Dependencies
 pip install -r requirements.txt
-▶️ Run the App
+▶️ Run Application
 python app.py
-👉 Open browser:
+Open in browser:
 
 http://127.0.0.1:5000
-⚠️ Common Issues
-❌ Whisper loading every time
-Due to Flask debug mode restart
+🧠 How It Works
+🎤 User records audio
 
-Fix:
+🔄 Audio converted to WAV
 
-app.run(debug=False)
-❌ FFmpeg error
-Ensure FFmpeg is installed or auto-detected
+🧠 Whisper transcribes speech
 
-❌ Audio not working
-Check proper WAV conversion
+🤖 ML model predicts YES/NO
 
-Avoid renaming files manually
+📊 Spectrogram generated
 
-📊 Output Example
-✔ Prediction: YES / NO
+📊 Model Details
+Feature Extraction: MFCC
 
-✔ Transcribed text
+Model Type: Neural Network (Keras)
 
-✔ Spectrogram image
+Input Shape: (timesteps, features)
 
-🔥 Future Improvements
-Multi-word recognition
+Output: Binary (Yes / No)
 
-More dataset training
+⚠️ Important Notes
+Whisper runs locally → no API key needed
 
-Better UI
+First run may take time (model loading)
 
-Deployment (Render / AWS)
+Ensure FFmpeg is installed/configured
 
-🙌 Author
+🔮 Future Improvements
+🎯 Multi-class classification
+
+🌍 Multi-language support
+
+⚡ Faster inference
+
+📱 Mobile compatibility
+
+👩‍💻 Author
 Ashmita Goyal
 
-⭐ If you like this project
-Give it a ⭐ on GitHub!
+⭐ Show Some Love
+If you liked this project, give it a ⭐ on GitHub!
+
+
+---
+
+## 🔥 Extra Pro Tips (THIS matters)
+
+👉 Screenshot section:
+- UI ka screenshot
+- spectrogram output
+- prediction result
+
+👉 Add later:
+```markdown
+## 🎥 Demo Video
+[Watch Demo](your-link)
