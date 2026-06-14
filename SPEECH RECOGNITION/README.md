@@ -1,45 +1,38 @@
-🎤 Speech Recognition & Classification using Whisper
-🚀 Overview
-This project is an end-to-end Speech Recognition system that:
+🎤 Speech Recognition System (Yes/No Classifier + Whisper)
+📌 Overview
+This project is an end-to-end Speech Recognition System that can:
 
-Converts speech → text using OpenAI Whisper (local model)
+🎙️ Take voice input from user
 
-Performs keyword classification (Yes/No)
+🔊 Convert audio into text using Whisper
 
-Provides a web interface (Flask) for real-time interaction
+🤖 Classify speech into "Yes" or "No" using a trained ML model
 
-✨ Features
-🎙️ Audio upload / recording support
+📊 Generate spectrograms for visualization
 
-🧠 Speech-to-text using Whisper (no API key required)
+🚀 Features
+🎤 Real-time audio recording (browser)
 
-📊 MFCC-based preprocessing
+🔄 Audio format conversion (WebM → WAV)
 
-🤖 Deep Learning model for classification
+🧠 Speech-to-text using Whisper
 
-🌐 Interactive frontend (HTML, CSS, JS)
+🤖 Custom trained classification model (Yes/No)
 
-⚡ Fast local inference
+📊 Spectrogram generation
 
-🧠 Tech Stack
-Python
+🌐 Flask-based web app
 
-Flask
-
-OpenAI Whisper (local)
-
-Librosa (audio processing)
-
-TensorFlow / Keras
-
-JavaScript (frontend)
-
-📂 Project Structure
-SPEECH RECOGNITION/
+🏗️ Project Structure
+SPEECH-RECOGNITION/
 │
-├── app.py                # Flask backend
-├── requirements.txt     # Dependencies
-├── README.md
+├── app.py                      # Main Flask app
+├── requirements.txt           # Dependencies
+├── test.py                    # Model testing
+│
+├── data/
+│   ├── yes/
+│   └── no/
 │
 ├── model/
 │   ├── model.py
@@ -52,93 +45,113 @@ SPEECH RECOGNITION/
 │   └── predict.py
 │
 ├── static/
-│   ├── script.js
-│   ├── style.css
 │   ├── uploads/
-│   └── spectrograms/
+│   ├── spectrograms/
+│   ├── script.js
+│   └── style.css
 │
 ├── templates/
 │   └── index.html
-│
-├── data/                # Training data
-├── uploads/             # Runtime uploads
-⚙️ Installation
-1️⃣ Clone Repo
-git clone <your-repo-link>
-cd speech-recognition
-2️⃣ Create Virtual Environment
-python -m venv venv
-venv\Scripts\activate   # Windows
-3️⃣ Install Dependencies
-pip install -r requirements.txt
-▶️ Run the App
-python app.py
-Open in browser:
+⚙️ Tech Stack
+Python
 
-http://127.0.0.1:5000
+Flask
+
+TensorFlow / Keras
+
+Librosa
+
+Whisper (OpenAI)
+
+JavaScript (Frontend)
+
+HTML/CSS
+
 🧠 How It Works
 🔹 Step 1: Audio Input
-User uploads or records audio
+User records audio from browser
 
-🔹 Step 2: Preprocessing
-Convert to 16kHz mono WAV
+File saved as .webm
 
-Extract MFCC features
+🔹 Step 2: Conversion
+Audio converted to .wav using FFmpeg
 
-🔹 Step 3: Whisper Transcription
-whisper_model = whisper.load_model("base")
-result = whisper_model.transcribe(audio_path)
-🔹 Step 4: Classification
-Process MFCC features
+🔹 Step 3: Feature Extraction
+MFCC features extracted using Librosa
 
-Predict label (Yes / No)
+🔹 Step 4: Prediction
+Model predicts: Yes / No
 
-🔹 Step 5: Output
+🔹 Step 5: Whisper
+Converts speech → text
+
+🔹 Step 6: Output
+Shows:
+
+Prediction
+
 Transcribed text
 
-Predicted label
+Spectrogram
 
-Confidence score
+🧪 Model Details
+Input: Audio (WAV)
 
-⚠️ Important Notes
-Whisper model loads at runtime:
+Features: MFCC
 
-Loading Whisper model (base)...
-👉 This is normal (first run takes time)
-
-Flask debug mode runs app twice → model loads twice
-
-Use debug=False to avoid double loading
-
-📊 Model Details
-Input: MFCC features
-
-Architecture: Neural Network (Keras)
+Model: Neural Network (Keras)
 
 Output: Binary classification (Yes / No)
 
-🧪 Sample Commands
-Test preprocessing:
+💻 Installation & Setup
+1️⃣ Clone repo
+git clone <your-repo-link>
+cd SPEECH-RECOGNITION
+2️⃣ Create virtual environment
+python -m venv .venv
+3️⃣ Activate environment
+# Windows
+.venv\Scripts\activate
+4️⃣ Install dependencies
+pip install -r requirements.txt
+▶️ Run the App
+python app.py
+👉 Open browser:
 
-python test.py
-🚧 Future Improvements
-🔊 Real-time microphone streaming
+http://127.0.0.1:5000
+⚠️ Common Issues
+❌ Whisper loading every time
+Due to Flask debug mode restart
 
-🌍 Multi-language support
+Fix:
 
-📈 More dataset for better accuracy
+app.run(debug=False)
+❌ FFmpeg error
+Ensure FFmpeg is installed or auto-detected
 
-🚀 Deployment (AWS / Render)
+❌ Audio not working
+Check proper WAV conversion
 
-👩‍💻 Author
+Avoid renaming files manually
+
+📊 Output Example
+✔ Prediction: YES / NO
+
+✔ Transcribed text
+
+✔ Spectrogram image
+
+🔥 Future Improvements
+Multi-word recognition
+
+More dataset training
+
+Better UI
+
+Deployment (Render / AWS)
+
+🙌 Author
 Ashmita Goyal
 
-💡 Final Note
-This project combines:
-
-Speech Recognition (Whisper)
-
-Machine Learning Classification
-
-Full Stack Development (Flask + JS)
-
+⭐ If you like this project
+Give it a ⭐ on GitHub!
